@@ -29,9 +29,6 @@ public class MovimentoManualController {
 	@Autowired
 	MovimentoManualService movimentoManualService;
 	
-	@Autowired
-	MovimentoManualRepository movimentoManualRepository;
-	
 	@GetMapping
 	public List<MovimentoManual> listar() {
 		return null;
@@ -39,7 +36,7 @@ public class MovimentoManualController {
 	
 	@GetMapping("/{id}")
 	public ResponseEntity<MovimentoManual> buscar(@PathVariable Integer id) {
-		Optional<MovimentoManual> movimentoManual = movimentoManualRepository.findById(id);
+		Optional<MovimentoManual> movimentoManual = movimentoManualService.findById(id);
 		
 		if(movimentoManual.isPresent()) {
 			return ResponseEntity.ok(movimentoManual.get());
@@ -57,11 +54,11 @@ public class MovimentoManualController {
 	@PutMapping("/{id}")
 	public ResponseEntity<MovimentoManual> atualizar(@Valid @PathVariable Integer id, @RequestBody MovimentoManual movimentoManual){
 		
-		if(!movimentoManualRepository.existsById(id)) {
+		if(!movimentoManualService.existsById(id)) {
 			return ResponseEntity.notFound().build();
 		}
 		
-		movimentoManual.setAno(id);
+		movimentoManual.getMovimentoManualId().setAno(id);
 		movimentoManual = movimentoManualService.salvar(movimentoManual);
 		
 		return ResponseEntity.ok(movimentoManual);
@@ -70,7 +67,7 @@ public class MovimentoManualController {
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Void> remover(@PathVariable Integer id){
 		
-		if(!movimentoManualRepository.existsById(id)) {
+		if(!movimentoManualService.existsById(id)) {
 			return ResponseEntity.notFound().build();
 		}
 		

@@ -22,6 +22,7 @@ public class ProdutoCosif implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	public static final String PRODUTO_PROPERTY = "produto";
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "COD_COSIF")
