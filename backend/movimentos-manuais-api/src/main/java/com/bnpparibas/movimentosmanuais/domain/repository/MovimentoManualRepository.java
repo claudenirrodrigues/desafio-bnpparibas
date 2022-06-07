@@ -7,6 +7,6 @@ import com.bnpparibas.movimentosmanuais.domain.model.MovimentoManual;
 
 
 @Repository
-public interface MovimentoManualRepository extends JpaRepository<MovimentoManual, Integer>{
+public interface MovimentoManualRepository extends JpaRepository<MovimentoManual, Long>{
 
 }

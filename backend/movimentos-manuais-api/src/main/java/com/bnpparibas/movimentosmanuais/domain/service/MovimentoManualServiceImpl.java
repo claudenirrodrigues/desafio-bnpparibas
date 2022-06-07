@@ -5,7 +5,6 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
 import com.bnpparibas.movimentosmanuais.domain.model.MovimentoManual;
@@ -26,19 +25,19 @@ public class MovimentoManualServiceImpl implements MovimentoManualService{
 	
 	
 	@Override
-	public void excluir(Integer id) {
+	public void excluir(Long id) {
 		// TODO Auto-generated method stub
 	}
 
 
 	@Override
-	public Optional<MovimentoManual> findById(Integer id) {
+	public Optional<MovimentoManual> findById(Long id) {
 		return movimentoManualRepository.findById(id);
 	}
 
 
 	@Override
-	public boolean existsById(@Valid Integer id) {
+	public boolean existsById(@Valid Long id) {
 		return movimentoManualRepository.existsById(id);
 	}
 }

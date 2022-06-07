@@ -4,8 +4,10 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -17,16 +19,11 @@ import javax.persistence.Table;
 @Table(name="PRODUTO")
 public class Produto implements Serializable{
 	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -8175854214604256518L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "COD_PRODUTO")
-	
-	
 	private String codigoProduto;
 	
 	@Column(name = "DES_PRODUTO")
@@ -35,7 +32,7 @@ public class Produto implements Serializable{
 	@Column(name = "STA_STATUS")
 	private String status;
 	
-	@OneToMany(mappedBy = "produto")
+	@OneToMany(mappedBy = ProdutoCosif.PRODUTO_PROPERTY, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<ProdutoCosif> produtos;
 
 	public String getCodigoProduto() {

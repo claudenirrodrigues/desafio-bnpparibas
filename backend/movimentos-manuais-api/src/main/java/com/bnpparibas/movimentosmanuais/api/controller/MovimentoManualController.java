@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bnpparibas.movimentosmanuais.domain.model.MovimentoManual;
-import com.bnpparibas.movimentosmanuais.domain.repository.MovimentoManualRepository;
 import com.bnpparibas.movimentosmanuais.domain.service.MovimentoManualService;
 
 @RestController
@@ -35,7 +34,7 @@ public class MovimentoManualController {
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<MovimentoManual> buscar(@PathVariable Integer id) {
+	public ResponseEntity<MovimentoManual> buscar(@PathVariable Long id) {
 		Optional<MovimentoManual> movimentoManual = movimentoManualService.findById(id);
 		
 		if(movimentoManual.isPresent()) {
@@ -52,20 +51,20 @@ public class MovimentoManualController {
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<MovimentoManual> atualizar(@Valid @PathVariable Integer id, @RequestBody MovimentoManual movimentoManual){
+	public ResponseEntity<MovimentoManual> atualizar(@Valid @PathVariable Long id, @RequestBody MovimentoManual movimentoManual){
 		
 		if(!movimentoManualService.existsById(id)) {
 			return ResponseEntity.notFound().build();
 		}
 		
-		movimentoManual.getMovimentoManualId().setAno(id);
+		movimentoManual.setNumeroLancamento(id);
 		movimentoManual = movimentoManualService.salvar(movimentoManual);
 		
 		return ResponseEntity.ok(movimentoManual);
 	}
 	
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Void> remover(@PathVariable Integer id){
+	public ResponseEntity<Void> remover(@PathVariable Long id){
 		
 		if(!movimentoManualService.existsById(id)) {
 			return ResponseEntity.notFound().build();
