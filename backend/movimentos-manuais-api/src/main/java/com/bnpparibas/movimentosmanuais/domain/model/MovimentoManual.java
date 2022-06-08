@@ -8,8 +8,6 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
@@ -26,17 +24,15 @@ public class MovimentoManual implements Serializable{
 	public static final String PRODUTO_COSIF_PROPERTY = "produtoCosif";
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="NUM_LANCAMENTO")
-	@NotNull
 	private Long numeroLancamento;
 	
 	@Column(name="DAT_MES")
-	@NotNull
+	@NotNull(message = "Mês é obrigatório")
 	private Integer mes;
 	
 	@Column(name="DAT_ANO")
-	@NotNull
+	@NotNull(message = "Ano é obrigatório")
 	private Integer ano;
 	
 	@ManyToOne(fetch = FetchType.EAGER,  cascade=CascadeType.ALL)
@@ -47,15 +43,19 @@ public class MovimentoManual implements Serializable{
 
 		
 	@Column(name = "DES_DESCRICAO")
+	@NotNull(message = "Descrição é obrigatório")
 	private String descricao;
 	
 	@Column(name = "DAT_MOVIMENTO")
+	@NotNull(message = "Data do Movimento é obrigatório")
 	private Date dataMovimento;
 	
 	@Column(name = "COD_USUARIO")
+	@NotNull(message = "Código do Usuário é obrigatório")
 	private String codigoUsuario;
 	
 	@Column(name = "VAL_VALOR")
+	@NotNull(message = "Valor é obrigatório")
 	private Double valor;
 
 	public Long getNumeroLancamento() {

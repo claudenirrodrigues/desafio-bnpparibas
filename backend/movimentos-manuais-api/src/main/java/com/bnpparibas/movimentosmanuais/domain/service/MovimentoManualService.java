@@ -1,5 +1,6 @@
 package com.bnpparibas.movimentosmanuais.domain.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.validation.Valid;
@@ -9,8 +10,9 @@ import com.bnpparibas.movimentosmanuais.domain.model.MovimentoManual;
 public interface MovimentoManualService {
 
 	
-	public MovimentoManual salvar(MovimentoManual movimentoManual);
-	public void excluir(Long id);
-	public Optional<MovimentoManual> findById(Long id);
-	public boolean existsById(@Valid Long id);
+	public MovimentoManual save(MovimentoManual movimentoManual);
+	public void delete(Long numeroLancamento);
+	public Optional<MovimentoManual> findByNumeroLancamento(Long numeroLancamento);
+	public boolean existsByNumeroLancamento(@Valid Long numeroLancamento);
+	public List<MovimentoManual> findAll();
 }

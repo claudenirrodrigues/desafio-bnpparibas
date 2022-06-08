@@ -8,11 +8,10 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 
 @Entity
@@ -22,8 +21,8 @@ public class Produto implements Serializable{
 	private static final long serialVersionUID = -8175854214604256518L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "COD_PRODUTO")
+	@NotNull(message = "Código do Produto é obrigatório")
 	private String codigoProduto;
 	
 	@Column(name = "DES_PRODUTO")

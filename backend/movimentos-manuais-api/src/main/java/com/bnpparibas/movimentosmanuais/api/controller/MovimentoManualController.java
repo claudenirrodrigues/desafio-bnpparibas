@@ -29,13 +29,13 @@ public class MovimentoManualController {
 	MovimentoManualService movimentoManualService;
 	
 	@GetMapping
-	public List<MovimentoManual> listar() {
-		return null;
+	public List<MovimentoManual> findAll() {
+		return movimentoManualService.findAll();
 	}
 	
-	@GetMapping("/{id}")
-	public ResponseEntity<MovimentoManual> buscar(@PathVariable Long id) {
-		Optional<MovimentoManual> movimentoManual = movimentoManualService.findById(id);
+	@GetMapping("/{numeroLancamento}")
+	public ResponseEntity<MovimentoManual> findByNumeroLancamento(@PathVariable Long numeroLancamento) {
+		Optional<MovimentoManual> movimentoManual = movimentoManualService.findByNumeroLancamento(numeroLancamento);
 		
 		if(movimentoManual.isPresent()) {
 			return ResponseEntity.ok(movimentoManual.get());
@@ -46,31 +46,31 @@ public class MovimentoManualController {
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED) 
-	public MovimentoManual adicionar(@Valid @RequestBody MovimentoManual movimentoManual) {
-		return movimentoManualService.salvar(movimentoManual);
+	public MovimentoManual create(@Valid @RequestBody MovimentoManual movimentoManual) {
+		return movimentoManualService.save(movimentoManual);
 	}
 	
-	@PutMapping("/{id}")
-	public ResponseEntity<MovimentoManual> atualizar(@Valid @PathVariable Long id, @RequestBody MovimentoManual movimentoManual){
+	@PutMapping("/{numeroLancamento}")
+	public ResponseEntity<MovimentoManual> update(@Valid @PathVariable Long numeroLancamento, @RequestBody MovimentoManual movimentoManual){
 		
-		if(!movimentoManualService.existsById(id)) {
+		if(!movimentoManualService.existsByNumeroLancamento(numeroLancamento)) {
 			return ResponseEntity.notFound().build();
 		}
 		
-		movimentoManual.setNumeroLancamento(id);
-		movimentoManual = movimentoManualService.salvar(movimentoManual);
+		movimentoManual.setNumeroLancamento(numeroLancamento);
+		movimentoManual = movimentoManualService.save(movimentoManual);
 		
 		return ResponseEntity.ok(movimentoManual);
 	}
 	
-	@DeleteMapping("/{id}")
-	public ResponseEntity<Void> remover(@PathVariable Long id){
+	@DeleteMapping("/{numeroLancamento}")
+	public ResponseEntity<Void> delete(@PathVariable Long numeroLancamento){
 		
-		if(!movimentoManualService.existsById(id)) {
+		if(!movimentoManualService.existsByNumeroLancamento(numeroLancamento)) {
 			return ResponseEntity.notFound().build();
 		}
 		
-		movimentoManualService.excluir(id);
+		movimentoManualService.delete(numeroLancamento);
 		return ResponseEntity.noContent().build();
 	}
 
