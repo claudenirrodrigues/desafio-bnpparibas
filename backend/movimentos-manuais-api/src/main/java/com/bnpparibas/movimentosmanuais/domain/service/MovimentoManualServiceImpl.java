@@ -19,7 +19,7 @@ public class MovimentoManualServiceImpl implements MovimentoManualService{
 
 	@Autowired
 	private MovimentoManualRepository movimentoManualRepository;
-
+	
 	@Override
 	public MovimentoManual save(MovimentoManual movimentoManual) {
 		Long novoNumeroLancamento = movimentoManualRepository

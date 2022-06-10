@@ -40,7 +40,7 @@ public class ProdutoCosif implements Serializable{
 	private String status;
 	
 	@OneToMany(mappedBy = MovimentoManual.PRODUTO_COSIF_PROPERTY, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	private List<MovimentoManual> movimentoManualList;
+	private List<MovimentoManual> movimentosManuais;
 
 	public String getCodigoCosif() {
 		return codigoCosif;
@@ -74,12 +74,12 @@ public class ProdutoCosif implements Serializable{
 		this.status = status;
 	}
 
-	public List<MovimentoManual> getMovimentoManualList() {
-		return movimentoManualList;
+	public List<MovimentoManual> getMovimentosManuais() {
+		return movimentosManuais;
 	}
 
-	public void setMovimentoManualList(List<MovimentoManual> movimentoManualList) {
-		this.movimentoManualList = movimentoManualList;
+	public void setMovimentosManuais(List<MovimentoManual> movimentoManualList) {
+		this.movimentosManuais = movimentoManualList;
 	}
 
 	public static long getSerialversionuid() {
@@ -88,7 +88,7 @@ public class ProdutoCosif implements Serializable{
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(codigoClassificacao, codigoCosif, movimentoManualList, produto, status);
+		return Objects.hash(codigoClassificacao, codigoCosif, movimentosManuais, produto, status);
 	}
 
 	@Override
@@ -102,14 +102,14 @@ public class ProdutoCosif implements Serializable{
 		ProdutoCosif other = (ProdutoCosif) obj;
 		return Objects.equals(codigoClassificacao, other.codigoClassificacao)
 				&& Objects.equals(codigoCosif, other.codigoCosif)
-				&& Objects.equals(movimentoManualList, other.movimentoManualList)
+				&& Objects.equals(movimentosManuais, other.movimentosManuais)
 				&& Objects.equals(produto, other.produto) && Objects.equals(status, other.status);
 	}
 
 	@Override
 	public String toString() {
 		return "ProdutoCosif [codigoCosif=" + codigoCosif + ", produto=" + produto + ", codigoClassificacao="
-				+ codigoClassificacao + ", status=" + status + ", movimentoManualList=" + movimentoManualList + "]";
+				+ codigoClassificacao + ", status=" + status + ", movimentosManuais=" + movimentosManuais + "]";
 	}
 	
 }

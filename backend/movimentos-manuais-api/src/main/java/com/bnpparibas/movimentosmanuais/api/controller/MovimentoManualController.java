@@ -19,7 +19,9 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bnpparibas.movimentosmanuais.domain.model.MovimentoManual;
+import com.bnpparibas.movimentosmanuais.domain.model.Produto;
 import com.bnpparibas.movimentosmanuais.domain.service.MovimentoManualService;
+import com.bnpparibas.movimentosmanuais.domain.service.ProdutoService;
 
 @RestController
 @RequestMapping("/movimentosManuais")
@@ -27,6 +29,9 @@ public class MovimentoManualController {
 	
 	@Autowired
 	MovimentoManualService movimentoManualService;
+	
+	@Autowired
+	ProdutoService produtoService;
 	
 	@GetMapping
 	public List<MovimentoManual> findAll() {
@@ -72,6 +77,11 @@ public class MovimentoManualController {
 		
 		movimentoManualService.delete(numeroLancamento);
 		return ResponseEntity.noContent().build();
+	}
+	
+	@GetMapping("/produtos")
+	public List<Produto> findAllProdutos() {
+		return produtoService.findAll();
 	}
 
 }

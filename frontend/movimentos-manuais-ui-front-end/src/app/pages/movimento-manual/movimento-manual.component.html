@@ -1,0 +1,140 @@
+<div id="wrapper">
+    <div id="content-wrapper" class="d-flex flex-column" >
+        <div id="content">
+            <div class="container">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Movimentos Manuais</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <form (ngSubmit)="create()" >
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col">
+                                    <label for="" class="form-label">Mês:</label>
+                                    <input type="text" class="form-control" name="mes" placeholder="1" [(ngModel)]="movimentoManual.mes"/>
+                                    <label for="" class="form-label">Produto:</label>
+                                    <select class="form-select">
+                                        <optgroup label="lista aqui">
+                                            <option value="11" selected>1</option>
+                                            <option value="12" selectd>2</option>
+                                            <option value="13" selected>3</option>
+                                        </optgroup>
+                                    </select>
+                                    <label for="" class="form-label">Valor:</label>
+                                    <input type="text" class="form-control" name="valor" placeholder="1234,56" [(ngModel)]="movimentoManual.valor"/>
+                                    <label for="" class="form-label">Descrição:</label>
+                                    <textarea class="form-control form-control-lg" name="descricao" placeholder="Descrição: " [(ngModel)]="movimentoManual.descricao"></textarea>
+                                </div>
+                                <div class="col">
+                                    <label for="" class="form-label">Ano:</label>
+                                    <input type="text" class="form-control" name="ano" placeholder="1989"  [(ngModel)]="movimentoManual.ano"/>
+                                    <label for="" class="form-label">Cosif:</label>
+                                    <select class="form-select">
+                                        <optgroup label="lista aqui">
+                                            <option value="11" selected>1</option>
+                                            <option value="12" selected>2</option>
+                                            <option value="13" selected>3</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="my-2">
+                                <button label="1" class="btn btn-primary btn-sm border border-3">Limpar</button>
+                                <button label="2" class="btn btn-primary btn-sm border border-3">Novo</button>
+                                <button type="submit" label="Incluir" class="btn btn-primary btn-sm border border-3">Incluir</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="card shadow">
+                    <div class="card-body">
+                        <div id="dataTable" class="table-responsive table" role="grid" aria-describedby="dataTable-info">
+                            <table id="dataTable" class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Mês</th>
+                                        <th>Ano</th>
+                                        <th>Código do Produto</th>
+                                        <th>Descrição do Produto</th>
+                                        <th>Nt Lançamento</th>
+                                        <th>Descrição</th>
+                                        <th>Valor</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th>...</th>
+                                        <th>...</th>
+                                        <th>...</th>
+                                        <th>...</th>
+                                        <th>...</th>
+                                        <th>...</th>
+                                        <th>...</th>
+                                    </tr>
+                                    <tr>
+                                        <th>...</th>
+                                        <th>...</th>
+                                        <th>...</th>
+                                        <th>...</th>
+                                        <th>...</th>
+                                        <th>...</th>
+                                        <th>...</th>
+                                    </tr>
+                                    <tr>
+                                        <th>...</th>
+                                        <th>...</th>
+                                        <th>...</th>
+                                        <th>...</th>
+                                        <th>...</th>
+                                        <th>...</th>
+                                        <th>...</th>
+                                    </tr>
+                                    <tr>
+                                        <th>...</th>
+                                        <th>...</th>
+                                        <th>...</th>
+                                        <th>...</th>
+                                        <th>...</th>
+                                        <th>...</th>
+                                        <th>...</th>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 align-self-center">
+                                <p id="dataTable_info" class="dataTable_info" role="status" aria-live="polite">Exibindo de 1 à xpto</p>
+                            </div>
+                            <div class="col-md-6">
+                                <nav class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
+                                    <ul class="pagination">
+                                        <li class="page-item disabled">
+                                            <a href="#" aria-label="Previous" class="page-link">
+                                                <span aria-hidden="true">Anterior</span>
+                                            </a>
+                                        </li>
+                                        <li class="page-item active">
+                                            <a href="#" class="page-link">1</a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a href="#" class="page-link">2</a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a href="#" class="page-link">3</a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a href="#" class="page-link" aria-label="Next">Próximo</a>
+                                        </li>    
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>    
+    </div>    
+</div>
+

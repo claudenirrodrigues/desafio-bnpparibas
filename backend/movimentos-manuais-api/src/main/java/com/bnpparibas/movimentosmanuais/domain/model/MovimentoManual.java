@@ -56,7 +56,7 @@ public class MovimentoManual implements Serializable{
 	
 	@Column(name = "VAL_VALOR")
 	@NotNull(message = "Valor é obrigatório")
-	private Double valor;
+	private double valor;
 
 	public Long getNumeroLancamento() {
 		return numeroLancamento;
@@ -114,11 +114,11 @@ public class MovimentoManual implements Serializable{
 		this.codigoUsuario = codigoUsuario;
 	}
 
-	public Double getValor() {
+	public double getValor() {
 		return valor;
 	}
 
-	public void setValor(Double valor) {
+	public void setValor(double valor) {
 		this.valor = valor;
 	}
 

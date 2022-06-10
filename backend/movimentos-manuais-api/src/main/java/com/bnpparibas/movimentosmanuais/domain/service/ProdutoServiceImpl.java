@@ -1,5 +1,7 @@
 package com.bnpparibas.movimentosmanuais.domain.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +16,7 @@ public class ProdutoServiceImpl implements ProdutoService{
 	private ProdutoRepository produtoRepository;
 	
 	@Override
-	public Produto obterProduto (Produto produto) {
+	public Produto findByCodigoProduto (Produto produto) {
 		Produto produtoExistente = produtoRepository.findByCodigoProduto(produto.getCodigoProduto());
 		
 		if(produtoExistente == null) {
@@ -23,6 +25,11 @@ public class ProdutoServiceImpl implements ProdutoService{
 		
 		return produtoExistente;
 	
+	}
+
+	@Override
+	public List<Produto> findAll() {
+		return produtoRepository.findAll();
 	}
 	
 

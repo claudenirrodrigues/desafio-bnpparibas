@@ -32,7 +32,7 @@ public class Produto implements Serializable{
 	private String status;
 	
 	@OneToMany(mappedBy = ProdutoCosif.PRODUTO_PROPERTY, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	private List<ProdutoCosif> produtos;
+	private List<ProdutoCosif> produtosCosif;
 
 	public String getCodigoProduto() {
 		return codigoProduto;
@@ -58,17 +58,17 @@ public class Produto implements Serializable{
 		this.status = status;
 	}
 
-	public List<ProdutoCosif> getProdutos() {
-		return produtos;
+	public List<ProdutoCosif> getProdutosCosif() {
+		return produtosCosif;
 	}
 
-	public void setProdutos(List<ProdutoCosif> produtos) {
-		this.produtos = produtos;
+	public void setProdutosCosif(List<ProdutoCosif> produtos) {
+		this.produtosCosif = produtos;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(codigoProduto, descricacaoProduto, produtos, status);
+		return Objects.hash(codigoProduto, descricacaoProduto, produtosCosif, status);
 	}
 
 	@Override
@@ -82,13 +82,13 @@ public class Produto implements Serializable{
 		Produto other = (Produto) obj;
 		return Objects.equals(codigoProduto, other.codigoProduto)
 				&& Objects.equals(descricacaoProduto, other.descricacaoProduto)
-				&& Objects.equals(produtos, other.produtos) && Objects.equals(status, other.status);
+				&& Objects.equals(produtosCosif, other.produtosCosif) && Objects.equals(status, other.status);
 	}
 
 	@Override
 	public String toString() {
 		return "Produto [codigoProduto=" + codigoProduto + ", descricacaoProduto=" + descricacaoProduto + ", status="
-				+ status + ", produtos=" + produtos + "]";
+				+ status + ", produtosCosif=" + produtosCosif + "]";
 	}
 
 	
