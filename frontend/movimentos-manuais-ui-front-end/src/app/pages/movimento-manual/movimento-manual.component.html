@@ -15,10 +15,11 @@
                                     <label for="" class="form-label">Mês:</label>
                                     <input type="text" class="form-control" name="mes" placeholder="1" [(ngModel)]="movimentoManual.mes" [disabled]="componentsDisabled"/>
                                     <label class="form-label">Produto:</label>
-                                    <select class="form-select" name="codigoProduto" [(ngModel)]="movimentoManual.produtoCosif.produto.codigoProduto" placeholder="-- Selecione --">
+                                    <select class="form-select" name="codigoProduto" [(ngModel)]="movimentoManual.produtoCosif.produto.codigoProduto" placeholder="-- Selecione --"
+                                            (change)="onChangeProduto()" [disabled]="componentsDisabled">
                                         <optgroup label="-- Selecione --">
                                             <option *ngFor="let produto of produtos" [ngValue]="produto.codigoProduto">
-                                                {{produto.descricaoProduto}}
+                                                {{produto.codigoProduto + " - " + produto.descricaoProduto}}
                                             </option>
                                         </optgroup>
                                     </select>
@@ -31,7 +32,7 @@
                                     <label for="" class="form-label">Ano:</label>
                                     <input type="text" class="form-control" name="ano" placeholder="1989"  [(ngModel)]="movimentoManual.ano" [disabled]="componentsDisabled"/>
                                     <label for="" class="form-label">Cosif:</label>
-                                    <select class="form-select" name="codigoCosif" [(ngModel)]="movimentoManual.produtoCosif.codigoCosif" placeholder="-- Selecione --">
+                                    <select class="form-select" name="codigoCosif" [(ngModel)]="movimentoManual.produtoCosif.codigoCosif" placeholder="-- Selecione --" [disabled]="componentsDisabled">
                                         <optgroup label="-- Selecione --">
                                             <option *ngFor="let produtoCosif of produtosCosif" [ngValue]="produtoCosif.codigoCosif">
                                                 {{produtoCosif.codigoCosif + " - (" + produtoCosif.codigoClassificacao + ")"}}
@@ -63,42 +64,15 @@
                                         <th>Valor</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody *ngFor="let movimento of movimentosManuais">
                                     <tr>
-                                        <th>...</th>
-                                        <th>...</th>
-                                        <th>...</th>
-                                        <th>...</th>
-                                        <th>...</th>
-                                        <th>...</th>
-                                        <th>...</th>
-                                    </tr>
-                                    <tr>
-                                        <th>...</th>
-                                        <th>...</th>
-                                        <th>...</th>
-                                        <th>...</th>
-                                        <th>...</th>
-                                        <th>...</th>
-                                        <th>...</th>
-                                    </tr>
-                                    <tr>
-                                        <th>...</th>
-                                        <th>...</th>
-                                        <th>...</th>
-                                        <th>...</th>
-                                        <th>...</th>
-                                        <th>...</th>
-                                        <th>...</th>
-                                    </tr>
-                                    <tr>
-                                        <th>...</th>
-                                        <th>...</th>
-                                        <th>...</th>
-                                        <th>...</th>
-                                        <th>...</th>
-                                        <th>...</th>
-                                        <th>...</th>
+                                        <td>{{movimento.mes}}</td>
+                                        <td>{{movimento.ano}}</td>
+                                        <td>{{movimento.produtoCosif.produto.codigoProduto}}</td>
+                                        <td>{{movimento.produtoCosif.produto.descricaoProduto}}</td>
+                                        <td>{{movimento.numeroLancamento}}</td>
+                                        <td>{{movimento.descricao}}</td>
+                                        <td>{{movimento.valor}}</td>
                                     </tr>
                                 </tbody>
                             </table>

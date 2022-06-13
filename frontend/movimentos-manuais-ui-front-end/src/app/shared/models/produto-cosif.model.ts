@@ -6,6 +6,6 @@ export class ProdutoCosif {
     codigoCosif: string ="";
     produto: Produto;
     codigoClassificacao: string;
-    status: string;
+    status: string ="";
     movimentosManuais: MovimentoManual[];
 }

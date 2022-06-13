@@ -45,12 +45,29 @@ export class MovimentoManualComponent implements OnInit {
       }
     });
   }
+
+  onChangeProduto() {
+    let codidigoProduto = this.movimentoManual.produtoCosif.produto.codigoProduto
+    this.findAllProdutosCosifByCodigoProduto(codidigoProduto);
+  }
+
+  findAllProdutosCosifByCodigoProduto(codigoProduto: string) {
+    this.movimentoManualService.findAllProdutosCosifByCodigoProduto(codigoProduto).subscribe(data => {
+      if (JSON.stringify(data['data']) != 'null' && JSON.stringify(data) != '{}' && JSON.stringify(data) != '[]' && typeof JSON.stringify(data) != 'undefined') {
+          this.produtosCosif = data;
+          console.log(this.produtosCosif);
+      }
+    });
+  }
   
   findAllprodutos() {
     this.movimentoManualService.findAllProdutos().subscribe((data: Produto[]) => {
       if (JSON.stringify(data['data']) != 'null' && JSON.stringify(data) != '{}' && JSON.stringify(data) != '[]' && typeof JSON.stringify(data) != 'undefined') {
+          let produto: Produto = new Produto();
           this.produtos = data;
+          produto = this.produtos[0];
           console.log(this.produtos);
+          console.log(produto);
       }
     });
   }

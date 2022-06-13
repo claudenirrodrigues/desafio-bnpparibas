@@ -52,7 +52,7 @@ public class ProdutoCosif implements Serializable{
 		this.codigoCosif = codigoCosif;
 	}
 
-	@JsonIgnore
+	
 	public Produto getProduto() {
 		return produto;
 	}

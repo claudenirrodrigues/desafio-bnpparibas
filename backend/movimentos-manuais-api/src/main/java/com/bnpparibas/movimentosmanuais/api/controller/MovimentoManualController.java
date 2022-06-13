@@ -94,5 +94,13 @@ public class MovimentoManualController {
 	public List<ProdutoCosif> findAllProdutosCosif() {
 		return produtoCosifService.findAll();
 	}
+	
+	@GetMapping("/produtosCosif/{codigoProduto}")
+	public List<ProdutoCosif> findByCodigoProduto(@PathVariable String codigoProduto) {
+		Produto produto = new Produto();
+		produto.setCodigoProduto(codigoProduto);	
+		return produtoCosifService.findByProduto(produto);
+			
+	}
 
 }

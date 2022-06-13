@@ -4,18 +4,20 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
-import javax.persistence.CascadeType;
+import javax.persistence.Access;
+import javax.persistence.AccessType;
 import javax.persistence.Column;
+import javax.persistence.Embeddable;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Data;
+
+
 
 @Entity
 @Table(name="MOVIMENTO_MANUAL")
@@ -25,7 +27,6 @@ public class MovimentoManual implements Serializable{
 
 	public static final String PRODUTO_COSIF_PROPERTY = "produtoCosif";
 	
-	@Id
 	@Column(name="NUM_LANCAMENTO")
 	private Long numeroLancamento;
 	
@@ -37,7 +38,7 @@ public class MovimentoManual implements Serializable{
 	@NotNull(message = "Ano é obrigatório")
 	private Integer ano;
 	
-	@ManyToOne(fetch = FetchType.EAGER,  cascade=CascadeType.ALL)
+	@ManyToOne()
 	@JoinColumns({
         @JoinColumn(name = "COD_PRODUTO", referencedColumnName = "COD_PRODUTO"),
         @JoinColumn(name = "COD_COSIF", referencedColumnName = "COD_COSIF") })
@@ -59,6 +60,15 @@ public class MovimentoManual implements Serializable{
 	@Column(name = "VAL_VALOR")
 	@NotNull(message = "Valor é obrigatório")
 	private double valor;
+	
+	@Embeddable
+	@Access(AccessType.FIELD)
+	@Data
+	public static class MovimentoManualId implements Serializable{
+
+		private static final long serialVersionUID = -5164854928212218220L;
+		
+	}
 
 	public Long getNumeroLancamento() {
 		return numeroLancamento;
@@ -84,7 +94,7 @@ public class MovimentoManual implements Serializable{
 		this.ano = ano;
 	}
 
-	@JsonIgnore
+	
 	public ProdutoCosif getProdutoCosif() {
 		return produtoCosif;
 	}

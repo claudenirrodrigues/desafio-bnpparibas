@@ -20,10 +20,7 @@ public class MovimentosManuaisApiApplication {
 			public void addCorsMappings(CorsRegistry registry) {
 				registry.addMapping("/**")
 						.allowedMethods("GET", "POST", "PUT", "DELETE")
-						.allowedOrigins("http://localhost:4200")
-						.allowedHeaders("header1", "header2", "header3")
-			            .exposedHeaders("header1", "header2")
-			            .allowCredentials(false).maxAge(3600);
+						.allowedOrigins("http://localhost:4200");
 			}
 		};
 	}

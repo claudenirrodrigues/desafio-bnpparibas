@@ -11,7 +11,7 @@ import { catchError, retry, map} from "rxjs/operators";
   providedIn: 'root'
 })
 export class MovimentoManualService {
-
+  
   constructor(private http: HttpClient, private appConfig: AppConfigurationService) { }
 
   findAll(): Observable<MovimentoManual[]>  {
@@ -37,6 +37,14 @@ export class MovimentoManualService {
       catchError((e) => this.errorHandler(e))
     );
     
+  }
+
+  findAllProdutosCosifByCodigoProduto(codigoProduto: string): Observable<ProdutoCosif[]>  {
+    return this.http.get<ProdutoCosif []>(this.appConfig.baseUrl + "/movimentosManuais/produtosCosif/" + codigoProduto).pipe(
+      retry(1),
+      map((obj)=>obj),
+      catchError((e) => this.errorHandler(e))
+    );
   }
 
   save(data:MovimentoManual): Observable<MovimentoManual>  {
