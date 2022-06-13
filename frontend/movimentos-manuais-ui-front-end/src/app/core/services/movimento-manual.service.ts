@@ -6,7 +6,6 @@ import { Produto } from 'src/app/shared/models/produto.model';
 import { ProdutoCosif } from 'src/app/shared/models/produto-cosif.model';
 import { AppConfigurationService } from './app-configuration.service';
 import { catchError, retry, map} from "rxjs/operators";
-import { resourceLimits } from 'worker_threads';
 
 @Injectable({
   providedIn: 'root'

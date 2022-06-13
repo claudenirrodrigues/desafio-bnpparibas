@@ -14,11 +14,9 @@
                                 <div class="col">
                                     <label for="" class="form-label">Mês:</label>
                                     <input type="text" class="form-control" name="mes" placeholder="1" [(ngModel)]="movimentoManual.mes" [disabled]="componentsDisabled"/>
-                                    <label for="produto" class="form-label">Produto:</label>
-                                    <select formControlName="produto" class="form-select" [(ngModel)]="movimentoManual.produtoCosif.codigoProduto" placeholder="-- Selecione --">
+                                    <label class="form-label">Produto:</label>
+                                    <select class="form-select" name="codigoProduto" [(ngModel)]="movimentoManual.produtoCosif.produto.codigoProduto" placeholder="-- Selecione --">
                                         <optgroup label="-- Selecione --">
-                                            <option disabled>Select Produto</option>
-                                            <option>Choose Produto</option>
                                             <option *ngFor="let produto of produtos" [ngValue]="produto.codigoProduto">
                                                 {{produto.descricaoProduto}}
                                             </option>
@@ -33,7 +31,7 @@
                                     <label for="" class="form-label">Ano:</label>
                                     <input type="text" class="form-control" name="ano" placeholder="1989"  [(ngModel)]="movimentoManual.ano" [disabled]="componentsDisabled"/>
                                     <label for="" class="form-label">Cosif:</label>
-                                    <select class="form-select" [(ngModel)]="movimentoManual.produtoCosif.codigoCosif" placeholder="-- Selecione --">
+                                    <select class="form-select" name="codigoCosif" [(ngModel)]="movimentoManual.produtoCosif.codigoCosif" placeholder="-- Selecione --">
                                         <optgroup label="-- Selecione --">
                                             <option *ngFor="let produtoCosif of produtosCosif" [ngValue]="produtoCosif.codigoCosif">
                                                 {{produtoCosif.codigoCosif + " - (" + produtoCosif.codigoClassificacao + ")"}}
@@ -43,8 +41,8 @@
                                 </div>
                             </div>
                             <div class="my-2">
-                                <button label="Limpar" class="btn btn-primary btn-sm border border-3">Limpar</button>
-                                <button label="Novo" class="btn btn-primary btn-sm border border-3">Novo</button>
+                                <button label="Limpar" class="btn btn-primary btn-sm border border-3" (click)="clearForm(formData)">Limpar</button>
+                                <button label="Novo" class="btn btn-primary btn-sm border border-3" (click)="componentsDisabled=false">Novo</button>
                                 <button type="submit" label="Incluir" class="btn btn-primary btn-sm border border-3">Incluir</button>
                             </div>
                         </div>

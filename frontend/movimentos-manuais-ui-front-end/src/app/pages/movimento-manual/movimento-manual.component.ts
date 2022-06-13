@@ -31,6 +31,7 @@ export class MovimentoManualComponent implements OnInit {
   
   loadView() {
     this.movimentoManual.produtoCosif = new ProdutoCosif();
+    this.movimentoManual.produtoCosif.produto = new Produto();
     this.findAll();
     this.findAllprodutos();
     this.findAllProdutosCosif();
