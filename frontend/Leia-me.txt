@@ -3,3 +3,10 @@ Infraestrutura utilizada para o desenvolvimento do teste:
 - Sistema operacional Windows 7
 - Node.Js versão 13.14.0 (devido a limitação do sistema operacional)
 - Angular versão 9.1.13 (devido a compaibilidade do Node.js instalado)
+
+Pontos que necessitam de manutenção:
+
+- Exibição da Descrição do Produto no ComboBox e no DataTable, a informação esta sendo carregada da base de dados,
+contudo, não é exibida;
+- Implementar a Paginação no DataTable;
+- Incluir mascara no campo Valor, no momento, só aceita a informação no formato -> "12345.67";
