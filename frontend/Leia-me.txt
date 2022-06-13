@@ -1,0 +1,5 @@
+Infraestrutura utilizada para o desenvolvimento do teste:
+
+- Sistema operacional Windows 7
+- Node.Js versão 13.14.0 (devido a limitação do sistema operacional)
+- Angular versão 9.1.13 (devido a compaibilidade do Node.js instalado)
