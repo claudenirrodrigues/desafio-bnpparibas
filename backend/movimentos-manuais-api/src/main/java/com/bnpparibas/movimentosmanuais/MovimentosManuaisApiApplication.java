@@ -18,9 +18,12 @@ public class MovimentosManuaisApiApplication {
 		return new WebMvcConfigurer() {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("/*")
+				registry.addMapping("/**")
 						.allowedMethods("GET", "POST", "PUT", "DELETE")
-						.allowedOrigins("http://localhost:4200");
+						.allowedOrigins("http://localhost:4200")
+						.allowedHeaders("header1", "header2", "header3")
+			            .exposedHeaders("header1", "header2")
+			            .allowCredentials(false).maxAge(3600);
 			}
 		};
 	}

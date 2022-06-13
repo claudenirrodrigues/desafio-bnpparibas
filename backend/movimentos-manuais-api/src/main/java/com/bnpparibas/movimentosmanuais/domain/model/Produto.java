@@ -13,6 +13,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 @Table(name="PRODUTO")
@@ -58,6 +60,8 @@ public class Produto implements Serializable{
 		this.status = status;
 	}
 
+	
+	@JsonIgnore
 	public List<ProdutoCosif> getProdutosCosif() {
 		return produtosCosif;
 	}

@@ -20,7 +20,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.bnpparibas.movimentosmanuais.domain.model.MovimentoManual;
 import com.bnpparibas.movimentosmanuais.domain.model.Produto;
+import com.bnpparibas.movimentosmanuais.domain.model.ProdutoCosif;
 import com.bnpparibas.movimentosmanuais.domain.service.MovimentoManualService;
+import com.bnpparibas.movimentosmanuais.domain.service.ProdutoCosifService;
 import com.bnpparibas.movimentosmanuais.domain.service.ProdutoService;
 
 @RestController
@@ -32,6 +34,10 @@ public class MovimentoManualController {
 	
 	@Autowired
 	ProdutoService produtoService;
+	
+	@Autowired
+	ProdutoCosifService produtoCosifService;
+	
 	
 	@GetMapping
 	public List<MovimentoManual> findAll() {
@@ -82,6 +88,11 @@ public class MovimentoManualController {
 	@GetMapping("/produtos")
 	public List<Produto> findAllProdutos() {
 		return produtoService.findAll();
+	}
+	
+	@GetMapping("/produtosCosif")
+	public List<ProdutoCosif> findAllProdutosCosif() {
+		return produtoCosifService.findAll();
 	}
 
 }

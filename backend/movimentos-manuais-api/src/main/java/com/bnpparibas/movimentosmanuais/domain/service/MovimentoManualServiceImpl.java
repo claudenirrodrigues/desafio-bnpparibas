@@ -22,9 +22,10 @@ public class MovimentoManualServiceImpl implements MovimentoManualService{
 	
 	@Override
 	public MovimentoManual save(MovimentoManual movimentoManual) {
-		Long novoNumeroLancamento = movimentoManualRepository
+		Long numeroLancamentoAtual = movimentoManualRepository
 				.findTopNumeroLancamentoByMesAndAno(movimentoManual.getMes(), movimentoManual.getAno());
-		movimentoManual.setNumeroLancamento(novoNumeroLancamento + 1);
+		
+		movimentoManual.setNumeroLancamento(numeroLancamentoAtual == null ? 1 : numeroLancamentoAtual++);
 		return movimentoManualRepository.save(movimentoManual);
 	}
 	

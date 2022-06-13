@@ -15,6 +15,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 @Table(name="PRODUTO_COSIF")
@@ -50,6 +52,7 @@ public class ProdutoCosif implements Serializable{
 		this.codigoCosif = codigoCosif;
 	}
 
+	@JsonIgnore
 	public Produto getProduto() {
 		return produto;
 	}
@@ -74,6 +77,7 @@ public class ProdutoCosif implements Serializable{
 		this.status = status;
 	}
 
+	@JsonIgnore
 	public List<MovimentoManual> getMovimentosManuais() {
 		return movimentosManuais;
 	}

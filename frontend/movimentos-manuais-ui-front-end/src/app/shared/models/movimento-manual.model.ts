@@ -7,8 +7,13 @@ export class MovimentoManual {
     produtoCosif: ProdutoCosif;
     descricao: string;
     dataMovimento: Date;
-    codigoUsuario: string = UserDefault.USUARIO_TESTE;
+    codigoUsuario: string;
     valor: number;
+    
+    //constructor(produtoCosif: ProdutoCosif) {
+    //    this.produtoCosif = produtoCosif;
+    //}
+
 
 }
 

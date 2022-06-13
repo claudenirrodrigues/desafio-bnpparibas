@@ -15,6 +15,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="MOVIMENTO_MANUAL")
 public class MovimentoManual implements Serializable{
@@ -82,6 +84,7 @@ public class MovimentoManual implements Serializable{
 		this.ano = ano;
 	}
 
+	@JsonIgnore
 	public ProdutoCosif getProdutoCosif() {
 		return produtoCosif;
 	}

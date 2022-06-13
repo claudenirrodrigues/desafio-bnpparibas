@@ -16,7 +16,7 @@ public class ProdutoCosifServiceImpl implements ProdutoCosifService{
 	private ProdutoCosifRepository produtoCosifRepository;
 	
 	@Override
-	public List<ProdutoCosif> listarTodos () {
+	public List<ProdutoCosif> findAll () {
 		List<ProdutoCosif> produtoCosifs = produtoCosifRepository.findAll();
 		
 		if(produtoCosifs == null || produtoCosifs.isEmpty()) {

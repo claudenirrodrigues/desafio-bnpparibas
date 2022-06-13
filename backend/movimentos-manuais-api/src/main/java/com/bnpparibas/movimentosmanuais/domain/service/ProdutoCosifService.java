@@ -6,6 +6,7 @@ import com.bnpparibas.movimentosmanuais.domain.model.ProdutoCosif;
 
 public interface ProdutoCosifService {
 	
-	public List<ProdutoCosif> listarTodos ();
+	public List<ProdutoCosif> findAll ();
+
 
 }
