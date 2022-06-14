@@ -9,6 +9,7 @@ import javax.persistence.AccessType;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
@@ -27,6 +28,7 @@ public class MovimentoManual implements Serializable{
 
 	public static final String PRODUTO_COSIF_PROPERTY = "produtoCosif";
 	
+	@Id
 	@Column(name="NUM_LANCAMENTO")
 	private Long numeroLancamento;
 	
