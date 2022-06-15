@@ -1,10 +1,7 @@
-import { ProdutoCosif } from "./produto-cosif.model";
+import { MovimentoManualId } from "./movimento-manual-id.models";
 
 export class MovimentoManual {
-    numeroLancamento: number;
-    mes: number;
-    ano: number;
-    produtoCosif: ProdutoCosif;
+    id: MovimentoManualId;
     descricao: string;
     dataMovimento: Date;
     codigoUsuario: string;

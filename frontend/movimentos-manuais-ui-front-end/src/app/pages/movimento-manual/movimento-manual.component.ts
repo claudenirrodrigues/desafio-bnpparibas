@@ -4,6 +4,8 @@ import { Produto } from 'src/app/shared/models/produto.model';
 import { ProdutoCosif } from 'src/app/shared/models/produto-cosif.model';
 import { MovimentoManualService } from 'src/app/core/services/movimento-manual.service';
 import { NgForm } from '@angular/forms';
+import { MovimentoManualId } from 'src/app/shared/models/movimento-manual-id.models';
+import { ProdutoCosifId } from 'src/app/shared/models/produto-cosif-id.models';
 
 @Component({
   selector: 'app-movimento-manual',
@@ -30,11 +32,17 @@ export class MovimentoManualComponent implements OnInit {
   }
   
   loadView() {
-    this.movimentoManual.produtoCosif = new ProdutoCosif();
-    this.movimentoManual.produtoCosif.produto = new Produto();
+    this.inicializeModels();
     this.findAll();
     this.findAllprodutos();
     this.findAllProdutosCosif();
+  }
+  
+  inicializeModels() {
+    this.movimentoManual.id = new MovimentoManualId();
+    this.movimentoManual.id.produtoCosif = new ProdutoCosif();
+    this.movimentoManual.id.produtoCosif.id = new ProdutoCosifId();
+    this.movimentoManual.id.produtoCosif.id.produto = new Produto();
   }
   
   findAllProdutosCosif() {
@@ -47,7 +55,7 @@ export class MovimentoManualComponent implements OnInit {
   }
 
   onChangeProduto() {
-    let codidigoProduto = this.movimentoManual.produtoCosif.produto.codigoProduto
+    let codidigoProduto = this.movimentoManual.id.produtoCosif.id.produto.codigoProduto
     this.findAllProdutosCosifByCodigoProduto(codidigoProduto);
   }
 

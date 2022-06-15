@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.bnpparibas.movimentosmanuais.domain.exception.DomainException;
 import com.bnpparibas.movimentosmanuais.domain.model.MovimentoManual;
+import com.bnpparibas.movimentosmanuais.domain.model.MovimentoManual.MovimentoManualId;
 import com.bnpparibas.movimentosmanuais.domain.repository.MovimentoManualRepository;
 
 
@@ -23,27 +24,29 @@ public class MovimentoManualServiceImpl implements MovimentoManualService{
 	@Override
 	public MovimentoManual save(MovimentoManual movimentoManual) {
 		Long numeroLancamentoAtual = movimentoManualRepository
-				.findTopNumeroLancamentoByMesAndAno(movimentoManual.getMes(), movimentoManual.getAno());
+				.findTopNumeroLancamentoByMesAndAno(movimentoManual.getId().getMes(), 
+						movimentoManual.getId().getAno());
 		
-		movimentoManual.setNumeroLancamento(numeroLancamentoAtual == null ? 1 : numeroLancamentoAtual++);
+		movimentoManual.getId()
+							.setNumeroLancamento(numeroLancamentoAtual == null ? 1 : ++numeroLancamentoAtual);
 		return movimentoManualRepository.save(movimentoManual);
 	}
 	
 	
 	@Override
-	public void delete(Long id) {
+	public void delete(MovimentoManualId id) {
 		throw new DomainException("Funcionalidade não implementada!");
 	}
 
 
 	@Override
-	public Optional<MovimentoManual> findByNumeroLancamento(Long id) {
+	public Optional<MovimentoManual> findById(MovimentoManualId id) {
 		return movimentoManualRepository.findById(id);
 	}
 
 
 	@Override
-	public boolean existsByNumeroLancamento(@Valid Long id) {
+	public boolean existsById(@Valid MovimentoManualId id) {
 		return movimentoManualRepository.existsById(id);
 	}
 
@@ -52,4 +55,14 @@ public class MovimentoManualServiceImpl implements MovimentoManualService{
 	public List<MovimentoManual> findAll() {
 		return movimentoManualRepository.findAll();
 	}
+
+
+	@Override
+	public List<MovimentoManual> findByAnyMovimentoManualId(Long numeroLancamento, Integer mes, Integer ano,
+			String codigoProduto, String codigoCosif) {
+		
+		
+		return null;
+	}
+
 }

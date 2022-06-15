@@ -6,13 +6,16 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import com.bnpparibas.movimentosmanuais.domain.model.MovimentoManual;
+import com.bnpparibas.movimentosmanuais.domain.model.MovimentoManual.MovimentoManualId;
 
 public interface MovimentoManualService {
 
 	
 	public MovimentoManual save(MovimentoManual movimentoManual);
-	public void delete(Long numeroLancamento);
-	public Optional<MovimentoManual> findByNumeroLancamento(Long numeroLancamento);
-	public boolean existsByNumeroLancamento(@Valid Long numeroLancamento);
+	public void delete(MovimentoManualId movimentoManualId);
+	public Optional<MovimentoManual> findById(MovimentoManualId movimentoManualId);
+	public boolean existsById(@Valid MovimentoManualId movimentoManualId);
 	public List<MovimentoManual> findAll();
+	public List<MovimentoManual> findByAnyMovimentoManualId(Long numeroLancamento, Integer mes, Integer ano,
+			String codigoProduto, String codigoCosif);
 }

@@ -7,10 +7,11 @@ import org.springframework.stereotype.Repository;
 
 import com.bnpparibas.movimentosmanuais.domain.model.Produto;
 import com.bnpparibas.movimentosmanuais.domain.model.ProdutoCosif;
+import com.bnpparibas.movimentosmanuais.domain.model.ProdutoCosif.ProdutoCosifId;
 
 @Repository
-public interface ProdutoCosifRepository extends JpaRepository<ProdutoCosif, String>{
+public interface ProdutoCosifRepository extends JpaRepository<ProdutoCosif, ProdutoCosifId>{
 
-	List<ProdutoCosif> findByProduto(Produto produto);
+	List<ProdutoCosif> findByIdProduto(Produto produto);
 
 }

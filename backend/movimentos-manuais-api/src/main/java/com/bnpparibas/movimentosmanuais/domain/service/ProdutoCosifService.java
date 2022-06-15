@@ -9,7 +9,7 @@ public interface ProdutoCosifService {
 	
 	public List<ProdutoCosif> findAll ();
 
-	public List<ProdutoCosif> findByProduto(Produto produto);
+	public List<ProdutoCosif> findByProdutoCosifIdProduto(Produto produto);
 
 	
 

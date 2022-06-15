@@ -29,13 +29,13 @@ public class ProdutoCosifServiceImpl implements ProdutoCosifService{
 	}
 
 	@Override
-	public List<ProdutoCosif> findByProduto(Produto produto) {
+	public List<ProdutoCosif> findByProdutoCosifIdProduto(Produto produto) {
 		
 		if(produto == null || produto.getCodigoProduto() == null) {
 			throw new DomainException("Código do produto é obrigatório para efetuar a consulta Cosif.");
 		}
 		
-		List<ProdutoCosif> produtoCosifs = produtoCosifRepository.findByProduto(produto);
+		List<ProdutoCosif> produtoCosifs = produtoCosifRepository.findByIdProduto(produto);
 		
 		if(produtoCosifs == null || produtoCosifs.isEmpty()) {
 			throw new DomainException("Não há Produto COSIF cadastrado.");

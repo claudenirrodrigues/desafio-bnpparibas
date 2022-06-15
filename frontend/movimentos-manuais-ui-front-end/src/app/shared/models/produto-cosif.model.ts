@@ -1,10 +1,9 @@
-import { Produto } from "./produto.model";
 import { MovimentoManual } from "./movimento-manual.model";
+import { ProdutoCosifId } from "./produto-cosif-id.models";
 
 export class ProdutoCosif {
 
-    codigoCosif: string ="";
-    produto: Produto;
+    id: ProdutoCosifId;
     codigoClassificacao: string;
     status: string ="";
     movimentosManuais: MovimentoManual[];
